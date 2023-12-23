@@ -187,7 +187,7 @@ def parseScript(test, preamble):
         else (s, x)
         for (s, x) in substitutions
     ]
-    # In order to use modules additional compilation flags are required.
+    # In order to use modules, additional compilation flags are required.
     # Adding these to the %{compile_flags} gives a chicken and egg issue:
     # - the modules need to be built with the same compilation flags as the
     #   tests,
@@ -283,9 +283,9 @@ class CxxStandardLibraryTest(lit.formats.FileBasedTest):
         // MODULE: std std.compat
 
            This directive will build the required C++23 standard library
-           modules and add the provide the additional compiler flags in
+           modules and add the additional compiler flags in
            %{module_flags}. (Libc++ offers these modules in C++20 as an
-           extenstion.)
+           extension.)
 
     Additional provided substitutions and features
     ==============================================
