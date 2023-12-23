@@ -146,9 +146,12 @@ def parseScript(test, preamble):
         elif module == "std.compat":
             has_std_compat_module = True
         else:
-             script.insert(0, f"echo \"The module '{module}' is not valid, use 'std' or 'std.compat'\"")
-             script.insert(1, "false");
-             return script
+            script.insert(
+                0,
+                f"echo \"The module '{module}' is not valid, use 'std' or 'std.compat'\"",
+            )
+            script.insert(1, "false")
+            return script
 
     if modules:
         # This flag is needed for both modules.

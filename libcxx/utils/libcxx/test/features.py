@@ -329,7 +329,6 @@ DEFAULT_FEATURES = [
         # Avoid building on platforms that don't support modules properly.
         or not hasCompileFlag(cfg, "-Wno-reserved-module-identifier"),
     ),
-
 ]
 
 # Deduce and add the test features that that are implied by the #defines in
