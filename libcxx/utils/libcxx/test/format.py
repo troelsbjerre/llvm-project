@@ -189,7 +189,7 @@ def parseScript(test, preamble):
     ]
     # In order to use modules additional compilation flags are required.
     # Adding these to the %{compile_flags} gives a chicken and egg issue:
-    # - the modules need to be build with the same compilation flags as the
+    # - the modules need to be built with the same compilation flags as the
     #   tests,
     # - except for the module dependency, which does not exist.
     # The issue is resolved by adding a private substitution.
