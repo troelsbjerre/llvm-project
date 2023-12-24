@@ -138,11 +138,10 @@ def parseScript(test, preamble):
     script += preamble
     script += scriptInTest
 
-    has_std_module = False
     has_std_compat_module = False
     for module in modules:
         if module == "std":
-            has_std_module = True
+            pass
         elif module == "std.compat":
             has_std_compat_module = True
         else:
@@ -165,23 +164,23 @@ def parseScript(test, preamble):
                 0,
                 "%dbg(MODULE std.compat) %{cxx} %{flags} %{compile_flags} "
                 "-Wno-reserved-module-identifier -Wno-reserved-user-defined-literal "
+                "-fprebuilt-module-path=%T %T/std.pcm "
                 "--precompile -o %T/std.compat.pcm -c %{module}/std.compat.cppm",
             )
             moduleCompileFlags.append("%T/std.compat.pcm")
 
         # Make sure the std module is added before std.compat.
-        # Libc++'s std.compat module will depend on its std module.
+        # Libc++'s std.compat module depends on its std module.
         # It is not known whether the compiler expects the modules in the order
         # of their dependencies. However it's trivial to provide them in that
         # order.
-        if has_std_module:
-            script.insert(
-                0,
-                "%dbg(MODULE std) %{cxx} %{flags} %{compile_flags} "
-                "-Wno-reserved-module-identifier -Wno-reserved-user-defined-literal "
-                "--precompile -o %T/std.pcm -c %{module}/std.cppm",
-            )
-            moduleCompileFlags.append("%T/std.pcm")
+        script.insert(
+            0,
+            "%dbg(MODULE std) %{cxx} %{flags} %{compile_flags} "
+            "-Wno-reserved-module-identifier -Wno-reserved-user-defined-literal "
+            "--precompile -o %T/std.pcm -c %{module}/std.cppm",
+        )
+        moduleCompileFlags.append("%T/std.pcm")
 
     # Add compile flags specified with ADDITIONAL_COMPILE_FLAGS.
     substitutions = [
