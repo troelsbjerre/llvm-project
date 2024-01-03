@@ -19,7 +19,7 @@ def : PfmCountersDefaultBinding<DefaultPfmCounters>;
 
 // Intel X86 Counters.
 defvar DefaultIntelPfmValidationCounters = [
-  PfmValidationCounter<InstructionRetired, "INSTRUCTIONS_RETIRED">
+  PfmValidationCounter<InstructionRetired, "INSTRUCTIONS_RETIRED">,
   PfmValidationCounter<L1DCacheLoadMiss, "MEM_LOAD_UOPS_RETIRED:L1_MISS">,
   PfmValidationCounter<L1ICacheLoadMiss, "L1-ICACHE-LOAD-MISSES">,
   PfmValidationCounter<DataTLBLoadMiss, "DTLB_LOAD_MISSES:MISS_CAUSES_A_WALK">,
@@ -205,7 +205,7 @@ def : PfmCountersBinding<"tigerlake", IceLakePfmCounters>;
 
 // AMD X86 Counters.
 defvar DefaultAMDPfmValidationCounters = [
-  PfmValidationCounter<InstructionRetired, "RETIRED_INSTRUCTIONS">
+  PfmValidationCounter<InstructionRetired, "RETIRED_INSTRUCTIONS">,
   PfmValidationCounter<L1DCacheLoadMiss, "L1-DCACHE-LOAD-MISSES">,
   PfmValidationCounter<L1DCacheStoreMiss, "L1-DCACHE-STORE-MISSES">,
   PfmValidationCounter<L1ICacheLoadMiss, "L1-ICACHE-LOAD-MISSES">,
